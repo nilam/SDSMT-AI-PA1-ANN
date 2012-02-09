@@ -35,3 +35,30 @@ perceptron::perceptron()
 perceptron :: ~perceptron()
 {
 }
+
+/***************************************************************************//**
+ * @author Christopher Jensen
+ *
+ * @par Description:
+ * Connects a perceptron's input slot associated with index. This will be used
+ * as a new input to the current perceptron.
+ ******************************************************************************/
+void perceptron::connect(int index, perceptron other)
+{
+    // Do some basic validation on the input, to prevent segfaults.
+    if(index < 0 || index > NUM_INPUT || other == NULL) return;
+    // Attach the input at index to the address of the other perceptron's output
+    input[index] = &other.output;
+}
+
+string getWeights(char delimiter)
+{
+    string out;
+    for(int i = 0; i < NUM_INPUT; ++i)
+    {
+        out += (int)input[i];
+        // Since we want to use this for file i/o, delimit the weights.
+        out += delimiter;
+    }
+    return out;
+}

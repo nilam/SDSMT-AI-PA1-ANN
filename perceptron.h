@@ -49,7 +49,7 @@ class perceptron
   void connect(int index, perceptron other);
 
   /*! @brief Get the weights in a human-readable format */
-  string getWeights(void);
+  string getWeights(char delimiter = ' ');
 
   /*! 
    * @brief Seed the weights from a string, or randomize if null is passed in.
