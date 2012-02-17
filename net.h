@@ -21,6 +21,7 @@
 #include "perceptron.h"
 #include <stack>
 #include <vector>
+#include <sstream>
 using namespace std;
 
 class ann{
@@ -34,17 +35,10 @@ class ann{
     public:
         /*!
          * @brief
-         * Creates a new neural network. The first argument is the number of
-         * hidden layers to include in the network and does not include the
-         * output layer. The second argument is an array of integers which 
-         * describes how many perceptrons should be in the hidden layers. This
-         * should be an array with size equal to the number specified in the
-         * first argument, plus one argument which should be 0, indicating an
-         * end to the array. The third argument is an array of pointers to
-         * the same data type used in the network, and should also be
-         * null-terminated.
+         * Creates a new neural network. A default constructor is used if the
+         * string is NULL, otherwise it is initialized based on the string.
          */
-        ann(int layers, int[] perceptrons, char** inputs);
+        ann(string weights);
         /*!
          * @brief
          * Destructor for the neural network. Frees any memory allocated by the

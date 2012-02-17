@@ -3,9 +3,9 @@
  * @brief Interface for the perceptron class.
  * @details Perceptrons form the base of an ANN. These perceptrons are designed
  * so that the inputs are pointers of the same type as the outputs. Since all
- * values should be between 0 and 1, respectively, the char data type gives us a
+ * values should be between 0 and 1, respectively, the int data type gives us a
  * perfectly reasonable storage type, represented as a fixed-point number with
- * three digits of precision. Individual perceptrons can be trained using the
+ * five digits of precision. Individual perceptrons can be trained using the
  * generalized training rule. An implementation of this perceptron as a neural
  * net should have some way to handle parallelization of training, such as a
  * swappable buffer, since these facilities are not provided here.
@@ -27,19 +27,22 @@
  */
 #define NUM_INPUT 21
 #endif
+#include <string>
+#include <sstream>
+using namespace std;
 
 class perceptron
 {
   private:
   /*! @brief The inputs that the perceptron takes.
    */
-  char* input[NUM_INPUT];
+  int* input[NUM_INPUT];
   /*! @brief The output of the perceptron. Type must match input to make sense.
    */
   int output;
   /*! @brief The weights, in fixed point, of each input.
    */
-  char weight[NUM_INPUT];
+  int weight[NUM_INPUT];
 
   public:
   perceptron();
@@ -54,15 +57,15 @@ class perceptron
   /*! 
    * @brief Seed the weights from a string, or randomize if null is passed in.
    */
-  seed(string weights);
+  void seed(string weights);
 
   /*! 
    * @brief Train this particular perceptron, and optionally output debug info. 
    */
-  int train(char[] inputs, char[] actual, fstream &out);
+  int train(char inputs[], char actual[], fstream &out);
 
   /*! @brief Train this particular perceptron. */
-  int train(char[] actual);
+  int train(char actual[]);
 }
 
 #endif

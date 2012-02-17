@@ -12,7 +12,7 @@
 #include "perceptron.h"
 #include <string>
 #include <cstdlib>
-#include <time>
+#include <ctime>
 
 /***************************************************************************//**
  * @author Christopher Jensen
@@ -61,4 +61,38 @@ string getWeights(char delimiter)
         out += delimiter;
     }
     return out;
+}
+
+/***************************************************************************//**
+ * @author Christopher Jensen
+ *
+ * @par Description:
+ * Sets the weights for a perceptron based upon the input string. The weights
+ * should be whitespace-separated list of integers. Any omitted weights will be
+ * set to 0.
+ ******************************************************************************/
+void perceptron::seed(string w_vals)
+{
+    if(w_vals == NULL)
+    {
+        for(int i = 0; i < NUM_INPUT; ++i)
+        {
+            weight[i] =(int)( rand_r( time() ) * 100.0 / RAND_MAX ) + 1;
+        }
+    }
+    else
+    {
+        int holder;
+        int i;
+        stringstream buf(w_vals);
+        for(i = 0; i < NUM_INPUT && buf >> holder; ++i)
+        {
+            if(holder != EOF) weight[i] = holder;
+        }
+        while(i < NUM_INPUT)
+        {
+            weight[i] = 0;
+            ++i;
+        }
+    }
 }
