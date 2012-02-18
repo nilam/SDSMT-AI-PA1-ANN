@@ -34,6 +34,9 @@ using namespace std;
 class perceptron
 {
   private:
+    /*! @brief A flag to see if we need to seed the random number generator.
+     */
+  static int seed = 1;
   /*! @brief The inputs that the perceptron takes.
    */
   int* input[NUM_INPUT];

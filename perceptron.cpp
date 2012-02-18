@@ -10,9 +10,9 @@
  * @endverbatim
  ******************************************************************************/
 #include "perceptron.h"
-#include <string>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 
 /***************************************************************************//**
  * @author Christopher Jensen
@@ -24,6 +24,7 @@
  ******************************************************************************/
 perceptron::perceptron()
 {
+    srand(time(NULL));
     for(int i = 0; i < NUM_INPUT; ++i)
     {
         input[i] = NULL;
