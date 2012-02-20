@@ -1,0 +1,96 @@
+#************************** Parameter.prm ***********************************
+#
+# Sample parameter file designed to illustrate the parameter file format for the
+# weather forecasting project.
+#
+# Modify this parameter file as needed.
+#
+# The order of fields is specified in the example below, and cannot be changed.
+# Fields are separated by white space (or commas).
+# Anything following # (or %) on a line is ignored as a comment.
+#
+# Author:       John M. Weiss, Ph.D.
+# Date:         Jan 2012
+#
+#*******************************************************************************
+
+#---------------
+# ANN parameters
+#---------------
+
+weights1.wts     # name of ANN weight file
+1000            # number of training epochs
+0.3             # learning rate
+0.3             # momentum
+0.1             # threshold for ANN error (training cutoff OR testing acceptance)
+2               # layers of adjustable weights (one less than layers of nodes)
+105 63 21       # how many nodes in each layer: 105 = 7 features * 3 (avg/min/max) * 5 days
+
+#-------------------------------
+# training and testing data file
+#-------------------------------
+
+weather2009.dat
+
+#------------------------------------------
+# input feature vector info:
+# number of features (no fewer than # of input layer nodes)
+# feature names and positions (zero based)
+#------------------------------------------
+
+21		# number of features per daily sample
+5		# number of days used for training/testing
+
+TAVG
+HAVG
+WAVG
+GAVG
+BAVG
+RAVG
+UVAVG
+TMIN
+HMIN
+WMIN
+GMIN
+BMIN
+RMIN
+UVMIN
+TMAX
+HMAX
+WMAX
+GMAX
+BMAX
+RMAX
+UVMAX
+
+#------------------------------------------
+# output class info:
+# number of classes (no fewer than # of input layer nodes)
+# class names and positions (zero based)
+#------------------------------------------
+
+21		# number of classes
+
+TAVG
+HAVG
+WAVG
+GAVG
+BAVG
+RAVG
+UVAVG
+TMIN
+HMIN
+WMIN
+GMIN
+BMIN
+RMIN
+UVMIN
+TMAX
+HMAX
+WMAX
+GMAX
+BMAX
+RMAX
+UVMAX
+
+#************************** Parameter.prm ***********************************
